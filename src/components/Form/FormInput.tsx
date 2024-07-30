@@ -1,26 +1,37 @@
-import classes from './Form.module.css';
-
 type Props = {
+  label: string;
   name: string;
-  placeholder: string;
-  text: string
+  type: string;
+  defaultValue: string;
 };
 
 export default function FormInput({
-  name, placeholder, text,
+  defaultValue, label, name, type,
 }: Props) {
   return (
-    <div>
-      <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-        {text}
-        <input
-          type={name}
-          name={name}
-          id={name}
-          className={classes.formInput}
-          placeholder={placeholder}
-          required
-        />
+    <div className="mb-4">
+      <label htmlFor="title" className="block text-gray-700 font-bold mb-2">
+        {label}
+        {type === 'textarea'
+          ? (
+            <textarea
+              defaultValue={defaultValue}
+              id={name}
+              name={name}
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows={5}
+              required
+            />
+          ) : (
+            <input
+              defaultValue={defaultValue}
+              type={type}
+              id={name}
+              name={name}
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          )}
       </label>
     </div>
   );

@@ -59,6 +59,19 @@ async function updateArticle(formData: FormData) {
   redirect('/admin/');
 }
 
+async function approveArticle(id: string) {
+  await prismaClient.article.update({
+    where: {
+      id,
+    },
+    data: {
+      approved: true,
+    },
+  });
+
+  revalidateTag('update-articles');
+}
+
 async function deleteArticle(formData: FormData) {
   const id = formData.get('id') as string;
 
@@ -74,4 +87,6 @@ async function deleteArticle(formData: FormData) {
   redirect('/admin');
 }
 
-export { createArticle, updateArticle, deleteArticle };
+export {
+  createArticle, updateArticle, deleteArticle, approveArticle,
+};

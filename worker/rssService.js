@@ -8,6 +8,7 @@ export const schema = Joi.object({
   link: Joi.string().uri().required(),
   pubDate: Joi.date().max('now').required(),
   content: Joi.string().required(),
+  approved: Joi.boolean().default(false),
 });
 
 const parser = new Parser();

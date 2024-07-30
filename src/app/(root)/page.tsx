@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default async function Home({ searchParams: { page, search } }: Props) {
-  const totalItems = fetchTotalArticles(search);
+  const totalItems = fetchTotalArticles(search, true);
   return (
     <>
       <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-16">

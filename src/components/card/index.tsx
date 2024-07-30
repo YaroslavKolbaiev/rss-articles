@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import formattedDate from '@/services/convertDate';
 import { fetchArticles } from '@/lib/data';
-// import wait from '@/utils/wait';
 import TrimText from './TrimText';
 import ArrowRight from '../icons/ArrowRight';
 
@@ -11,8 +10,7 @@ type Props = {
 };
 
 async function Card({ page, search }: Props) {
-  // await wait(4000);
-  const articles = await fetchArticles(page, search);
+  const articles = await fetchArticles(page, search, true);
   return (
     <>
       {articles.map(({

@@ -14,6 +14,7 @@ model Article {
   link     String
   pubDate  DateTime
   content   String
+  approved Boolean @default(false)
 }
 
 model User {

@@ -69,3 +69,24 @@
     dark:hover:bg-red-600
     dark:focus:ring-red-900
 }
+
+.approveButton {
+  @apply align-middle
+    select-none
+    font-sans
+    font-bold
+    uppercase
+    transition-all
+    duration-100
+    disabled:opacity-50
+    disabled:shadow-none
+    disabled:pointer-events-none
+    text-xs
+    py-1.5
+    px-3
+    rounded-lg
+    border
+    border-green-600
+    text-green-600
+    hover:opacity-75
+}

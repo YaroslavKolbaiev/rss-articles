@@ -3,7 +3,18 @@ import { ITEMS_PER_PAGE } from '@/utils/itemsPerPage';
 import prismaClient from '../../prisma/client';
 
 const fetchTotalArticles = unstable_cache(
-  async (search: string = '') => {
+  async (search: string = '', isClient?: boolean) => {
+    if (isClient) {
+      return prismaClient.article.count({
+        where: {
+          title: {
+            contains: search,
+          },
+          approved: true,
+        },
+      });
+    }
+
     const totalArticles = await prismaClient.article.count({
       where: {
         title: {
@@ -11,6 +22,7 @@ const fetchTotalArticles = unstable_cache(
         },
       },
     });
+
     return totalArticles;
   },
   ['totalArticles'],
@@ -20,10 +32,26 @@ const fetchTotalArticles = unstable_cache(
 );
 
 const fetchArticles = unstable_cache(
-  async (page: string = '1', search: string = '') => {
+  async (page: string = '1', search: string = '', isClient?: boolean) => {
     const skipItems = (+page - 1) * ITEMS_PER_PAGE();
 
     const take = ITEMS_PER_PAGE();
+
+    if (isClient) {
+      return prismaClient.article.findMany({
+        take,
+        skip: skipItems,
+        where: {
+          title: {
+            contains: search,
+          },
+          approved: true,
+        },
+        orderBy: {
+          pubDate: 'desc',
+        },
+      });
+    }
 
     const articles = await prismaClient.article.findMany({
       take,
