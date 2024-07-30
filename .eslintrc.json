@@ -1,3 +1,18 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["airbnb", "airbnb-typescript", "next"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["server.js", "/worker"],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
 }

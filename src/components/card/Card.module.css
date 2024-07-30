@@ -1,0 +1,5 @@
+.fadeText {
+  display: inline-block;
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  mask-mode: alpha;
+}
