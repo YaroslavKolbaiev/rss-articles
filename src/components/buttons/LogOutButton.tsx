@@ -9,15 +9,12 @@ type Props = {
 export default function LogOutButton({ username }: Props) {
   return (
     <form className="flex gap-4" action={logout}>
-      <Link
-        href="/admin"
-        className="text-white drop-shadow-md hidden lg:inline hover:underline"
-      >
+      <Link href="/admin" className="hidden text-white drop-shadow-md hover:underline lg:inline">
         {username}
       </Link>
       <button
         type="submit"
-        className="hover:scale-110 transition-transform duration-150"
+        className="transition-transform duration-150 hover:scale-110"
         aria-label="Log Out"
       >
         <LogOutIcon />

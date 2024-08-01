@@ -1,9 +1,7 @@
 FROM node:20.0.0-alpine
 
-ENV DATABASE_URL "file:./articles.db"
-ENV SESSION_SECRET "U50KD8OY5EhbUQ9sg/i96UvMbKFOjWsR6U8A0uMtrI8="
-ENV NEXT_CRYPTO_SECRET "amazingsecret"
-ENV HOST "http://localhost:3000"
+ENV SESSION_SECRET "whateverlongstringbutatleast32characterswillbeok"
+ENV NEXT_CRYPTO_SECRET "youramazingsecret"
 
 WORKDIR /usr/app
 
@@ -11,12 +9,8 @@ COPY package.json ./
 
 RUN npm install
 
-COPY prisma ./prisma
+COPY . .
 
-RUN npx prisma generate
+RUN npx prisma init --datasource-provider sqlite
 
-COPY ./ ./
-
-RUN npm run build
-
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

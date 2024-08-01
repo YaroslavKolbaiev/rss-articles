@@ -4,17 +4,17 @@ import { createArticle } from '@/lib/actions';
 
 export default async function NewArticle() {
   return (
-    <form action={createArticle} className="max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg">
+    <form action={createArticle} className="mx-auto max-w-lg rounded-lg bg-white p-4 shadow-md">
       <FormInput label="Title" name="title" type="text" defaultValue="" />
       <FormInput label="Link" name="link" type="text" defaultValue="" />
       <div className="mb-4">
-        <label htmlFor="pubDate" className="block text-gray-700 font-bold mb-2">
+        <label htmlFor="pubDate" className="mb-2 block font-bold text-gray-700">
           Publication Date
           <input
             type="date"
             id="pubDate"
             name="pubDate"
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </label>

@@ -2,8 +2,7 @@
 
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
-import prismaClient from '../../prisma/client';
-import { schema } from '../../worker/rssService';
+import { prismaClient, schema } from '../services/client';
 import { getSession } from './auth';
 
 async function createArticle(formData: FormData) {
@@ -59,7 +58,9 @@ async function updateArticle(formData: FormData) {
   redirect('/admin/');
 }
 
-async function approveArticle(id: string) {
+async function approveArticle(formData: FormData) {
+  const id = formData.get('id') as string;
+
   await prismaClient.article.update({
     where: {
       id,

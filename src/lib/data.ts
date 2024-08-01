@@ -1,6 +1,6 @@
 import { unstable_cache } from 'next/cache';
 import { ITEMS_PER_PAGE } from '@/utils/itemsPerPage';
-import prismaClient from '../../prisma/client';
+import { prismaClient } from '../services/client';
 
 const fetchTotalArticles = unstable_cache(
   async (search: string = '', isClient?: boolean) => {

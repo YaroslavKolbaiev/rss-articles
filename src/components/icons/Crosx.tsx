@@ -1,7 +1,7 @@
 function Crosx() {
   return (
     <svg
-      className="w-3 h-3"
+      className="h-3 w-3"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

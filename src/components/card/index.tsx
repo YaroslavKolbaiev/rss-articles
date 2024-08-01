@@ -11,6 +11,7 @@ type Props = {
 
 async function Card({ page, search }: Props) {
   const articles = await fetchArticles(page, search, true);
+
   return (
     <>
       {articles.map(({

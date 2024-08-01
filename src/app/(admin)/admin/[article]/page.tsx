@@ -17,7 +17,7 @@ export default async function EditArticle({ params: { article } }: Props) {
 
   return (
     <>
-      <form action={updateArticle} className="max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg">
+      <form action={updateArticle} className="mx-auto max-w-lg rounded-lg bg-white p-4 shadow-md">
         <input type="hidden" name="id" value={id} />
         <FormInput defaultValue={title} label="Title" name="title" type="text" />
         <FormInput defaultValue={link} label="Link" name="link" type="text" />

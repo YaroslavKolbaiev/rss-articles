@@ -8,10 +8,7 @@ type Props = {
 
 export default function AdminMenuButton({ link, text }: Props) {
   return (
-    <Link
-      className={classes.adminButton}
-      href={link}
-    >
+    <Link className={classes.adminButton} href={link}>
       {text}
     </Link>
   );
