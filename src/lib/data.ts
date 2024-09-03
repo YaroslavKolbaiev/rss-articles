@@ -43,7 +43,8 @@ const fetchArticles = unstable_cache(
         skip: skipItems,
         where: {
           title: {
-            contains: search,
+            contains: search.toLocaleLowerCase(),
+            mode: 'insensitive',
           },
           approved: true,
         },
@@ -58,7 +59,8 @@ const fetchArticles = unstable_cache(
       skip: skipItems,
       where: {
         title: {
-          contains: search,
+          contains: search.toLocaleLowerCase(),
+          mode: 'insensitive',
         },
       },
       orderBy: {
